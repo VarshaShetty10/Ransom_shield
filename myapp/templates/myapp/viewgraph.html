@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Model Metrics | RansomShield</title>
+  {% load static %}
+  <link href="https://fonts.googleapis.com/css2?family=Jost:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{% static 'myapp/style.css' %}?v=5">
+</head>
+
+<body>
+  <nav class="navbar">
+    <a href="/homepage" class="navbar-brand" style="text-decoration: none;"><span>//</span> RansomShield</a>
+    <div class="nav-box-container">
+      <a href="/homepage" class="nav-box">Dashboard</a>
+      <a href="/dataupload" class="nav-box">Upload</a>
+      <a href="/modelcreation" class="nav-box">Train</a>
+      <a href="/randompredict" class="nav-box">Predict</a>
+      <a href="/rfamilypredict" class="nav-box">Family</a>
+      <a href="/viewgraph" class="nav-box active">Metrics</a>
+    </div>
+  </nav>
+
+  <div class="container">
+    <h1>Performance Evaluation</h1>
+
+    <div style="display: grid; grid-template-columns: 1fr; gap: 2rem;">
+      <div class="card">
+        <h3>Model Accuracy</h3>
+        <div style="background: rgba(0,0,0,0.2); border-radius: 8px; padding: 1rem; text-align: center;">
+          <img src="{% static 'images/accuracy.png' %}" alt="Accuracy Graph" style="max-width: 100%; height: auto;">
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>Training Loss</h3>
+        <div style="background: rgba(0,0,0,0.2); border-radius: 8px; padding: 1rem; text-align: center;">
+          <img src="{% static 'images/Loss.png' %}" alt="Loss Graph" style="max-width: 100%; height: auto;">
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>Confusion Matrix</h3>
+        <div style="background: rgba(0,0,0,0.2); border-radius: 8px; padding: 1rem; text-align: center;">
+          <img src="{% static 'images/ConfusionMatrix.png' %}" alt="Confusion Matrix"
+            style="max-width: 100%; height: auto;">
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer>&copy; 2024 RansomShield Analytics Module</footer>
+</body>
+
+</html>

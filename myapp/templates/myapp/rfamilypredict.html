@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Family Classification | RansomShield</title>
+  {% load static %}
+  <link href="https://fonts.googleapis.com/css2?family=Jost:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{% static 'myapp/style.css' %}?v=5">
+</head>
+
+<body>
+  <nav class="navbar">
+    <a href="/homepage" class="navbar-brand" style="text-decoration: none;"><span>//</span> RansomShield</a>
+    <div class="nav-box-container">
+      <a href="/homepage" class="nav-box">Dashboard</a>
+      <a href="/dataupload" class="nav-box">Upload</a>
+      <a href="/modelcreation" class="nav-box">Train</a>
+      <a href="/randompredict" class="nav-box">Predict</a>
+      <a href="/rfamilypredict" class="nav-box active">Family</a>
+      <a href="/viewgraph" class="nav-box">Metrics</a>
+    </div>
+  </nav>
+
+  <div class="container">
+    <h1>Ransomware Family Classification</h1>
+
+    <div class="card">
+      <form action="{% url 'rfamilypredict' %}" method="POST" enctype="multipart/form-data"
+        style="max-width: 600px; margin: 0 auto;">
+        {% csrf_token %}
+        <div style="text-align: center; margin-bottom: 2rem;">
+          <h3>Upload Analysis Target</h3>
+          <p style="color: var(--text-muted);">Identify the specific ransomware family (e.g., WannaCry, Ryuk).</p>
+        </div>
+
+        <div
+          style="border: 2px dashed rgba(255,255,255,0.1); padding: 2rem; border-radius: 10px; text-align: center; margin-bottom: 2rem;">
+          <input type="file" id="myFile" name="myFile" style="display: none;"
+            onchange="document.getElementById('file-label').innerText = this.files[0].name">
+          <label for="myFile" id="file-label" style="cursor: pointer; color: var(--secondary); font-weight: bold;">
+            + Click to Select File
+          </label>
+        </div>
+
+        <button type="submit" class="btn btn-primary"
+          style="width: 100%; background: var(--secondary); box-shadow: 0 0 20px var(--secondary-glow); border-color: var(--secondary);">Run
+          Classification</button>
+      </form>
+
+      {% if data %}
+      <div style="margin-top: 3rem;">
+        <h3>Classification Results</h3>
+        <div style="overflow-x: auto;">
+          <table>
+            <thead>
+              <tr>
+                {% for key in data.0.keys %}
+                <th style="color: var(--secondary);">{{ key }}</th>
+                {% endfor %}
+              </tr>
+            </thead>
+            <tbody>
+              {% for row in data %}
+              <tr>
+                {% for value in row.values %}
+                <td>{{ value }}</td>
+                {% endfor %}
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+        </div>
+      </div>
+      {% endif %}
+    </div>
+  </div>
+</body>
+
+</html>

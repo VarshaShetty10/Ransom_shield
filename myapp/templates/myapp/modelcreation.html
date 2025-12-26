@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Model Training | RansomShield</title>
+  {% load static %}
+  <link href="https://fonts.googleapis.com/css2?family=Jost:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{% static 'myapp/style.css' %}?v=5">
+</head>
+
+<body>
+  <nav class="navbar">
+    <a href="/homepage" class="navbar-brand" style="text-decoration: none;"><span>//</span> RansomShield</a>
+    <div class="nav-box-container">
+      <a href="/homepage" class="nav-box">Dashboard</a>
+      <a href="/dataupload" class="nav-box">Upload</a>
+      <a href="/modelcreation" class="nav-box active">Train</a>
+      <a href="/randompredict" class="nav-box">Predict</a>
+      <a href="/rfamilypredict" class="nav-box">Family</a>
+      <a href="/viewgraph" class="nav-box">Metrics</a>
+    </div>
+  </nav>
+
+  <div class="container">
+    <h1>Model Generation</h1>
+
+    <div class="card">
+      <div style="text-align: center;">
+        <h2 style="color: var(--secondary);">Training Complete</h2>
+        <p style="color: var(--text-muted); margin-bottom: 2rem;">LSTM Neural Network has been trained on the provided
+          dataset.</p>
+
+        <div class="card"
+          style="background: rgba(0,0,0,0.3); text-align: left; font-family: 'Courier New', monospace; max-height: 400px; overflow-y: auto;">
+          <pre style="white-space: pre-wrap; color: var(--text-muted);">{{data}}</pre>
+        </div>
+
+        <div style="margin-top: 2rem;">
+          <a href="/randompredict" class="btn btn-primary">Deploy & Predict</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>

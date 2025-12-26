@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Dashboard | RansomShield</title>
+    {% load static %}
+    <link href="https://fonts.googleapis.com/css2?family=Jost:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'myapp/style.css' %}?v=5">
+    <style>
+        .dashboard-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 40px;
+            /* Large gap to prevent touching */
+            margin-top: 2rem;
+            max-width: 1400px;
+            /* Constrain width to keep them grouped */
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .card-link {
+            text-decoration: none;
+            transition: all 0.3s;
+            display: flex;
+            /* Flex to align content */
+            flex-direction: column;
+            width: 320px;
+            /* Fixed Medium Size */
+            height: 380px;
+            /* Fixed Height for Uniformity */
+            border-width: 2px;
+            border-style: solid;
+            background: rgba(16, 24, 40, 0.6);
+            padding: 2rem;
+            box-sizing: border-box;
+            border-radius: 15px;
+            position: relative;
+        }
+
+        .card-link:hover {
+            transform: translateY(-10px);
+            background: rgba(16, 24, 40, 0.95);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.6);
+            z-index: 10;
+        }
+
+        .icon-large {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            display: block;
+            text-align: center;
+        }
+
+        .card-title {
+            text-align: center;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+
+        .card-desc {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            text-align: center;
+            line-height: 1.5;
+            flex-grow: 1;
+            /* Pushes button to bottom */
+        }
+
+        .card-action {
+            text-align: center;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            padding-top: 1rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            margin-top: auto;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Top Corner Logout -->
+    <div style="position: absolute; top: 20px; right: 30px; z-index: 100;">
+        <a href="/login" class="btn btn-outline"
+            style="padding: 0.5rem 1.5rem; font-size: 0.9rem; border-radius: 20px;">⏻ Log Out</a>
+    </div>
+
+    <div class="container" style="margin-top: 4rem;">
+        <h1 style="text-align: left; margin-bottom: 2rem; padding-left: 20px;">🛡️ Security Dashboard</h1>
+
+        <div class="card"
+            style="margin-bottom: 3rem; border-left: 5px solid var(--primary); margin-left: 20px; margin-right: 20px;">
+            <div style="display: flex; gap: 2rem; align-items: center;">
+                <div style="flex: 1;">
+                    <h2 style="margin-bottom: 1rem;">Welcome, Administrator</h2>
+                    <p style="color: var(--text-muted);">
+                        System active. Select a module below to begin analysis.
+                    </p>
+                </div>
+                <div style="flex: 1; display: flex; justify-content: center;">
+                    <img src="{% static 'images/hcp.png' %}" alt="Dashboard Visual"
+                        style="border-radius: var(--border-radius); box-shadow: var(--shadow-lg); max-height: 150px;">
+                </div>
+            </div>
+        </div>
+
+        <!-- Uniform Flex Layout -->
+        <div class="dashboard-container">
+
+            <a href="/dataupload" class="card-link" style="border-color: var(--primary);">
+                <span class="icon-large">📂</span>
+                <h3 style="color: var(--primary);" class="card-title">Upload Data</h3>
+                <p class="card-desc">View dataset statistics and verify data integrity for training.</p>
+                <div class="card-action" style="color: var(--primary);">Access Module &rarr;</div>
+            </a>
+
+            <a href="/modelcreation" class="card-link" style="border-color: var(--secondary);">
+                <span class="icon-large">🧠</span>
+                <h3 style="color: var(--secondary);" class="card-title">Create Model</h3>
+                <p class="card-desc">Train LSTM neural networks on the latest dataset.</p>
+                <div class="card-action" style="color: var(--secondary);">Start Training &rarr;</div>
+            </a>
+
+            <a href="/randompredict" class="card-link" style="border-color: var(--success);">
+                <span class="icon-large">🛡️</span>
+                <h3 style="color: var(--success);" class="card-title">Threat Check</h3>
+                <p class="card-desc">Binary classification: Detect Goodware vs Ransomware.</p>
+                <div class="card-action" style="color: var(--success);">Run Analysis &rarr;</div>
+            </a>
+
+            <a href="/rfamilypredict" class="card-link" style="border-color: #f59e0b;">
+                <span class="icon-large">🧬</span>
+                <h3 style="color: #f59e0b;" class="card-title">Family ID</h3>
+                <p class="card-desc">Identify specific ransomware families and prevention tips.</p>
+                <div class="card-action" style="color: #f59e0b;">Identify Threat &rarr;</div>
+            </a>
+
+            <a href="/viewgraph" class="card-link" style="border-color: #ec4899;">
+                <span class="icon-large">📊</span>
+                <h3 style="color: #ec4899;" class="card-title">Analytics</h3>
+                <p class="card-desc">Visual performance metrics: Accuracy, Loss, and Confusion Matrix.</p>
+                <div class="card-action" style="color: #ec4899;">View Graphs &rarr;</div>
+            </a>
+
+        </div>
+    </div>
+
+    <footer style="margin-top: 4rem;">&copy; 2024 RansomShield Control Center</footer>
+</body>
+
+</html>
